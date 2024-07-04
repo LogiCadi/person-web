@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>选我</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        li {
+            list-style: none;
+            text-align: center;
+        }
+
+        .bg {
+            width: 100vw;
+            margin: auto;
+            text-align: center;
+        }
+
+        #img {
+
+            margin: 0 auto 20px;
+            text-align: center;
+        }
+
+       #img img {
+            width: 80vw;
+            max-width: 400px;
+            height: 120vw;
+            max-height: 600px;
+            display: none;
+            margin: auto;
+        }
+
+        #img .current {
+            display: inline-block;
+        }
+
+        .ruhua {
+            display: none;
+          
+        }
+
+        .ruhua img {
+           display: block;
+           width: 100vw;
+           max-width: 640px;
+           margin: auto;
+        }
+
+        .ruhua img:last-child {
+            width: 50vw;
+           max-width: 200px;
+        }
+
+        input {
+            width: 180px;
+            height: 60px;
+            background: url("images/huaji.jpg") no-repeat right;
+            background-color: #fff;
+            background-size: 20%;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: .5s;
+            font-size: 18px;
+
+        }
+
+        input:hover {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+            border: 2px solid #a9207e;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var imgs = document.getElementById("img").getElementsByTagName("IMG");
+            var bg = document.getElementsByClassName("bg")[0];
+            var btn = document.getElementById("btn");
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].src = "images/" + (i + 1) + ".jpg";
+            }
+
+            var flag = true;
+            btn.onclick = function () {
+                if (flag) {
+                    flag = false;
+                    btn.value = "好，就他了！";
+                    clearInterval(window.timeId);
+                    window.timeId = setInterval(function () {
+                        var rd = Math.floor(Math.random() * 10);
+                        console.log(rd);
+                        for (var i = 0; i < imgs.length; i++) {
+                            imgs[i].className = "";
+                        }
+                        imgs[rd].className = "current";
+
+                    }, 80);
+                } else {
+                    clearInterval(window.timeId);
+                    document.getElementById("img").style.display = "none";
+                    document.getElementsByClassName("ruhua")[0].style.display = "block";
+                    btn.style.display = "none";
+                    flag = true;
+                    btn.value = "选一个做媳妇";
+                }
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div class="bg">
+        <div id="img">
+            <ul>
+                <li>
+                    <img class="current" src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="ruhua">
+            <img src="images/ruhua.jpg" alt="">
+            <img src="images/untitled.png">
+        </div>
+        <input type="button" id="btn" value="选一个做媳妇">
+    </div>
+</body>
+
+</html>

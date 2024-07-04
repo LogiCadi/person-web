@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <meta keywords="luokai HomePage 主页" />
+    <title>luokai's Home Page</title>
+    <link rel="stylesheet" href="index.css" />
+    <link href="images/avatar.png" rel="icon" type="image/x-icon" />
+  </head>
+
+  <body>
+    <canvas id="c1"></canvas>
+    <canvas id="c2"></canvas>
+
+    <div class="container" v-scope style="display: none" :style="{display: 'flex'}">
+      <div class="head">
+        <h1>欢迎!</h1>
+        <p><span class="say">Never say Never!</span></p>
+      </div>
+      <div class="example">
+        <div class="case" v-for="item in examples">
+          <a :href="item.url"><img :src="item.img" /></a>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="row">@copyright luokai</div>
+        <div class="row">
+          <a v-for="item in link" target="_blank" :title="item.title" :href="item.url">
+            <img :src="item.img" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/canvas.js"></script>
+    <script type="module">
+      import { createApp } from "./js/petite-vue.js";
+
+      createApp({
+        // exposed to all expressions
+        examples: [
+          { url: "case_7_admin/index.html", img: "images/admin.png" },
+          { url: "case_6_2048/index.html", img: "images/2048.png" },
+          { url: "case_5_flappybird/index.html", img: "images/fb.png" },
+          { url: "case_4_cartAnimate/index.html", img: "images/20180626114256.png" },
+          { url: "case_3_tanchishe/index.html", img: "images/20180617000803.png" },
+          { url: "case_2_xuanxifu/index.html", img: "case_2_xuanxifu/images/2.jpg" },
+          { url: "case_1_lunbotu/index.html", img: "images/20180616000655.jpg" },
+        ],
+        link: [
+          { title: "掘金", url: "https://juejin.cn/user/1002380302487943", img: "./images/juejin.png" },
+          { title: "gitee", url: "https://gitee.com/logicadi", img: "./images/gitee.ico" },
+          { title: "github", url: "https://github.com/LogiCadi", img: "./images/github.png" },
+          { title: "npm", url: "https://www.npmjs.com/~mm996", img: "./images/npm.png" },
+        ],
+      }).mount();
+    </script>
+  </body>
+</html>
